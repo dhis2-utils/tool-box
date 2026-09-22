@@ -5,7 +5,3 @@ docs
 build
 .d2
 src/locales
-
-# Pre-dates this task's prettier config; out of scope here (scripts/ belongs
-# to Tasks 1/2, which this task must not modify).
-scripts

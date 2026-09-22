@@ -11,7 +11,7 @@ import { pathToFileURL } from 'node:url'
 
 const GITHUB_API = 'https://api.github.com'
 
-export const stripV = (tag) => tag.replace(/^v/, '')
+export const stripV = (tag) => tag.replace(/^v/i, '')
 
 export const fetchLatestRelease = async (
     repo,
@@ -67,13 +67,20 @@ export const toToolEntry = (tool, release) => {
 
 export const buildIndex = async (
     tools,
-    { fetchImpl = fetch, token = process.env.GITHUB_TOKEN, now = new Date() } = {}
+    {
+        fetchImpl = fetch,
+        token = process.env.GITHUB_TOKEN,
+        now = new Date(),
+    } = {}
 ) => {
     const entries = []
     // Sequential on purpose: eleven calls take a second or two, and it keeps
     // us clear of GitHub's secondary rate limits for concurrent requests.
     for (const tool of tools) {
-        const release = await fetchLatestRelease(tool.repo, { fetchImpl, token })
+        const release = await fetchLatestRelease(tool.repo, {
+            fetchImpl,
+            token,
+        })
         entries.push(toToolEntry(tool, release))
     }
     return { generated_at: now.toISOString(), tools: entries }
@@ -93,7 +100,7 @@ const main = async () => {
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
     main().catch((error) => {
-        console.error(error.message)
+        console.error(error)
         process.exit(1)
     })
 }
