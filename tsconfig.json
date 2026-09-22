@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "noEmit": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "allowJs": true,
+        "jsx": "react",
+        "esModuleInterop": true,
+        "target": "ESNext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"]
+        },
+        "types": ["jest", "@testing-library/jest-dom"]
+    },
+    "include": ["src", "types", "jest.setup.ts"]
+}

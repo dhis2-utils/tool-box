@@ -1,0 +1,23 @@
+# Hoists needed by @dhis2/app-shell, which reaches directly into libraries
+# that yarn 1 used to hoist. Preferable to pnpm's shamefullyHoist.
+publicHoistPattern:
+    - '@dhis2/ui'
+    - 'typeface-roboto'
+    - '@dhis2/app-adapter'
+    - 'prop-types'
+    - '@dhis2/d2-i18n'
+    - 'post-robot'
+    - 'styled-jsx'
+    - '@dhis2/pwa'
+
+# pnpm 10 runs no dependency lifecycle scripts except these.
+onlyBuiltDependencies:
+    - '@dhis2/cli-helpers-engine'
+    - core-js-pure
+    - esbuild
+
+# The repo is developed on macOS and inside a Linux sandbox from the same
+# checkout; install native binaries for both.
+supportedArchitectures:
+    os: [darwin, linux]
+    cpu: [arm64, x64]
