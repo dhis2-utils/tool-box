@@ -23,7 +23,10 @@ export const Toolbox = () => {
     const apps = useInstalledApps()
     const me = useCurrentUser()
 
-    if (index.isError) {
+    // Only show the error notice when there is no cached data to fall back
+    // on; a failed background refetch should keep showing the last-known
+    // table rather than replacing it with an error.
+    if (index.isError && index.data === undefined) {
         return (
             <div className={classes.container}>
                 <NoticeBox
@@ -32,7 +35,14 @@ export const Toolbox = () => {
                 >
                     {i18n.t(
                         'The index at {{url}} could not be loaded ({{reason}}). Check that this browser can reach github.io; a firewall or proxy may be blocking it.',
-                        { url: RELEASE_INDEX_URL, reason: index.error.message }
+                        {
+                            url: RELEASE_INDEX_URL,
+                            reason: index.error.message,
+                            // React escapes rendered output itself, so i18next's
+                            // own HTML-escaping of interpolated values would
+                            // only double-escape (e.g. "/" -> "&#x2F;").
+                            interpolation: { escapeValue: false },
+                        }
                     )}
                 </NoticeBox>
             </div>

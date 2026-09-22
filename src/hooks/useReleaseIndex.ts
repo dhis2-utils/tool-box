@@ -9,7 +9,16 @@ const isReleaseIndex = (value: unknown): value is ReleaseIndex => {
     const candidate = value as Partial<ReleaseIndex>
     return (
         typeof candidate.generated_at === 'string' &&
-        Array.isArray(candidate.tools)
+        Array.isArray(candidate.tools) &&
+        candidate.tools.every(
+            (tool) =>
+                typeof tool === 'object' &&
+                tool !== null &&
+                typeof (tool as Partial<ReleaseIndex['tools'][number]>).repo ===
+                    'string' &&
+                typeof (tool as Partial<ReleaseIndex['tools'][number]>).name ===
+                    'string'
+        )
     )
 }
 

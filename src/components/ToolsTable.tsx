@@ -46,6 +46,23 @@ const StatusTag = ({ status }: { status: ToolStatus }) => {
     }
 }
 
+const ExternalLink = ({
+    href,
+    children,
+}: {
+    href: string
+    children: React.ReactNode
+}) => (
+    <a
+        className={classes.link}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        {children}
+    </a>
+)
+
 const installedLabel = (row: ToolRow): string => {
     if (row.installedVersion !== null) {
         return row.installedVersion
@@ -79,14 +96,9 @@ export const ToolsTable = ({ rows }: { rows: ToolRow[] }) => (
             {rows.map((row) => (
                 <DataTableRow key={row.repo}>
                     <DataTableCell>
-                        <a
-                            className={classes.link}
-                            href={`https://github.com/${row.repo}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <ExternalLink href={`https://github.com/${row.repo}`}>
                             {row.name}
-                        </a>
+                        </ExternalLink>
                     </DataTableCell>
                     <DataTableCell>{installedLabel(row)}</DataTableCell>
                     <DataTableCell>{row.latestVersion ?? '-'}</DataTableCell>
@@ -95,15 +107,11 @@ export const ToolsTable = ({ rows }: { rows: ToolRow[] }) => (
                         <StatusTag status={row.status} />
                     </DataTableCell>
                     <DataTableCell>
-                        {row.downloadUrl !== null ? (
-                            <a
-                                className={classes.link}
-                                href={row.downloadUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
+                        {row.downloadUrl !== null &&
+                        row.downloadUrl.startsWith('https://') ? (
+                            <ExternalLink href={row.downloadUrl}>
                                 {i18n.t('Download')}
-                            </a>
+                            </ExternalLink>
                         ) : (
                             '-'
                         )}

@@ -53,6 +53,18 @@ describe('fetchReleaseIndex', () => {
             fetchReleaseIndex('https://x/releases.json', fetchImpl)
         ).rejects.toThrow('Unexpected index format')
     })
+
+    it('throws when a tool entry is missing required fields', async () => {
+        const fetchImpl = jest.fn(async () =>
+            responseWith(200, {
+                generated_at: '2026-09-22T03:00:12Z',
+                tools: [{ repo: 'x' }],
+            })
+        )
+        await expect(
+            fetchReleaseIndex('https://x/releases.json', fetchImpl)
+        ).rejects.toThrow('Unexpected index format')
+    })
 })
 
 describe('useReleaseIndex', () => {

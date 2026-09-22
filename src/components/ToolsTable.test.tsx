@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
-import { ToolsTable } from './ToolsTable'
+import { formatDate, ToolsTable } from './ToolsTable'
 import { ToolRow } from '@/types'
 
 const row = (overrides: Partial<ToolRow>): ToolRow => ({
@@ -83,5 +83,20 @@ describe('ToolsTable', () => {
         const cells = screen.getAllByRole('cell')
         expect(cells[2]).toHaveTextContent('-')
         expect(cells[3]).toHaveTextContent('-')
+    })
+
+    it('formats an invalid date as a dash', () => {
+        expect(formatDate('not a date')).toBe('-')
+    })
+
+    it('renders no Download link and a dash for a non-https download URL', () => {
+        render(
+            <ToolsTable rows={[row({ downloadUrl: 'javascript:alert(1)' })]} />
+        )
+        expect(
+            screen.queryByRole('link', { name: 'Download' })
+        ).not.toBeInTheDocument()
+        const cells = screen.getAllByRole('cell')
+        expect(cells[5]).toHaveTextContent('-')
     })
 })

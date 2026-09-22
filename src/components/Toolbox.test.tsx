@@ -31,7 +31,14 @@ const superuser = { authorities: ['ALL'] }
 const apps = [{ name: 'DHIS2 Admin Toolbox', version: '0.1.4' }]
 
 describe('Toolbox', () => {
+    let originalFetch: typeof fetch
+
+    beforeEach(() => {
+        originalFetch = global.fetch
+    })
+
     afterEach(() => {
+        global.fetch = originalFetch
         jest.restoreAllMocks()
     })
 
@@ -59,7 +66,16 @@ describe('Toolbox', () => {
         expect(
             await screen.findByText('Could not load the tool index')
         ).toBeInTheDocument()
-        expect(screen.getByText(/releases\.json/)).toBeInTheDocument()
+        expect(
+            screen.getByText(
+                (_, el) =>
+                    el?.children.length === 0 &&
+                    (el?.textContent?.includes(
+                        'https://dhis2.github.io/tool-box/releases.json'
+                    ) ??
+                        false)
+            )
+        ).toBeInTheDocument()
         expect(screen.queryByRole('table')).not.toBeInTheDocument()
     })
 
