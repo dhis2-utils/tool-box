@@ -6,8 +6,6 @@ build
 .d2
 src/locales
 
-# Pre-date this task's prettier config; out of scope here (scripts/ belongs
-# to Tasks 1/2, which this task must not modify; README.md isn't in this
-# task's file list).
+# Pre-dates this task's prettier config; out of scope here (scripts/ belongs
+# to Tasks 1/2, which this task must not modify).
 scripts
-README.md
