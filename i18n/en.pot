@@ -5,11 +5,74 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-09-22T11:25:48.498Z\n"
-"PO-Revision-Date: 2026-09-22T11:25:48.498Z\n"
+"POT-Creation-Date: 2026-09-22T11:59:04.912Z\n"
+"PO-Revision-Date: 2026-09-22T11:59:04.913Z\n"
 
-msgid "DHIS2 Admin Toolbox"
-msgstr "DHIS2 Admin Toolbox"
+msgid "Could not load the tool index"
+msgstr "Could not load the tool index"
+
+msgid ""
+"The index at {{url}} could not be loaded ({{reason}}). Check that this "
+"browser can reach github.io; a firewall or proxy may be blocking it."
+msgstr ""
+"The index at {{url}} could not be loaded ({{reason}}). Check that this "
+"browser can reach github.io; a firewall or proxy may be blocking it."
+
+msgid "Index updated {{when}}"
+msgstr "Index updated {{when}}"
+
+msgid "Could not read installed apps"
+msgstr "Could not read installed apps"
+
+msgid ""
+"Installed versions cannot be shown. The list of tools and releases is still "
+"current."
+msgstr ""
+"Installed versions cannot be shown. The list of tools and releases is still "
+"current."
+
+msgid "Limited view of installed apps"
+msgstr "Limited view of installed apps"
+
+msgid ""
+"You do not have the ALL authority. DHIS2 only lists apps you have access "
+"to, so tools you cannot open may appear here as not installed."
+msgstr ""
+"You do not have the ALL authority. DHIS2 only lists apps you have access "
+"to, so tools you cannot open may appear here as not installed."
+
+msgid "Up to date"
+msgstr "Up to date"
+
+msgid "Update available"
+msgstr "Update available"
+
+msgid "Not installed"
+msgstr "Not installed"
+
+msgid "No release yet"
+msgstr "No release yet"
+
+msgid "Unknown"
+msgstr "Unknown"
+
+msgid "Tool"
+msgstr "Tool"
+
+msgid "Installed"
+msgstr "Installed"
+
+msgid "Latest"
+msgstr "Latest"
+
+msgid "Released"
+msgstr "Released"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Download"
+msgstr "Download"
 
 msgctxt "Application title"
 msgid "__MANIFEST_APP_TITLE"
