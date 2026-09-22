@@ -45,12 +45,18 @@ pnpm start --proxy https://play.im.dhis2.org/dev-2-43
 
 `pnpm start` serves the app on port 3000 with a CORS proxy on port 8080 pointed at the
 given DHIS2 instance; log in at `http://localhost:3000` with `http://localhost:8080` as the
-server. Before the index is published, or to test against a different index, set
-`DHIS2_RELEASE_INDEX_URL`:
+server. When proxying to your own DHIS2 2.41+ instance instead of a play server, browser
+login needs `http://localhost:3000` and `http://localhost:8080` in that instance's CORS
+allowlist (`POST /api/configuration/corsAllowlist` with that JSON array, or System Settings →
+Access → CORS allowlist). Before the index is published, or to test against a different
+index, set `DHIS2_RELEASE_INDEX_URL`:
 
 ```
 DHIS2_RELEASE_INDEX_URL=http://localhost:8099/releases.json pnpm start
 ```
+
+A local index server for `DHIS2_RELEASE_INDEX_URL` must send `Access-Control-Allow-Origin`
+(for example `npx serve --cors`).
 
 Other scripts:
 

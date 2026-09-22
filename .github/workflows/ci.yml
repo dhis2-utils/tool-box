@@ -28,7 +28,10 @@ jobs:
               run: pnpm lint
 
             - name: Test
-              run: pnpm test && pnpm test:index
+              run: pnpm test
+
+            - name: Test index script
+              run: pnpm test:index
 
             - name: Build
               run: pnpm build

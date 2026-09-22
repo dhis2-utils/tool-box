@@ -47,7 +47,7 @@ jobs:
               run: |
                   set -euo pipefail
                   REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-                  mkdir "$RUNNER_TEMP/pages"
+                  mkdir -p "$RUNNER_TEMP/pages"
                   cd "$RUNNER_TEMP/pages"
                   git init -q -b gh-pages
                   git config user.name "github-actions[bot]"
@@ -55,6 +55,8 @@ jobs:
                   # Keep history when the branch exists; start fresh otherwise.
                   if git fetch -q "$REMOTE" gh-pages 2>/dev/null; then
                     git reset -q --hard FETCH_HEAD
+                  else
+                    echo "gh-pages branch not found (or fetch failed); starting a new branch"
                   fi
                   cp "$RUNNER_TEMP/releases.json" releases.json
                   touch .nojekyll

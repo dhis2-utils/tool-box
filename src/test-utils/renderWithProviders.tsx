@@ -14,6 +14,9 @@ type CustomData = React.ComponentProps<typeof CustomDataProvider>['data']
 export const createTestWrapper = (data: CustomData = {}) => {
     const queryClient = new QueryClient({
         defaultOptions: { queries: { retry: false } },
+        // Several tests exercise failing queries on purpose; silence
+        // TanStack's console.error so a green suite has no red output.
+        logger: { log: () => {}, warn: () => {}, error: () => {} },
     })
     return ({ children }: { children: React.ReactNode }) => (
         <Provider
