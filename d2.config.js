@@ -1,9 +1,12 @@
 /** @type {import('@dhis2/cli-app-scripts').D2Config} */
 const config = {
     type: 'app',
-    name: 'tool-box',
-    // Must stay exactly this: DHIS2 identifies the installed app by this
-    // title, and 1.0.0 has to upgrade the installed 0.1.5 in place.
+    // DHIS2 identifies an installed app by the manifest short_name (spaces
+    // become dashes), which the platform takes from `name`. The pre-platform
+    // releases were installed as "DHIS2-Admin-Toolbox", so `name` must stay
+    // exactly this for 1.0.0 to upgrade them in place. `title` is only the
+    // display name.
+    name: 'DHIS2-Admin-Toolbox',
     title: 'DHIS2 Admin Toolbox',
     description:
         'Lists the DHIS2 admin tools, their latest releases, and the versions installed on this instance',
