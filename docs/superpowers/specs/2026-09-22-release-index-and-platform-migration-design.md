@@ -52,6 +52,10 @@ Curated list, one entry per tool, maintained by hand:
 
 Seeded from the eleven repos in the current `src/app.js`, with `name` taken from each repo's current `package.json` `manifest.webapp.name`. `name` is what the app matches against installed apps, so it must equal the app's manifest name exactly (case-insensitive). Moving organisations means editing the `repo` values.
 
+One entry, `dhis2/tool-user-role-aggregator`, reflects a mid-project rename (renamed on GitHub; the API 301-redirects the old name).
+
+Known limitation: `name` in `tools.json` is the join key against `/api/apps` and nothing enforces it; a typo or an upstream title change silently shows a tool as Not installed. Possible follow-up: have the index workflow read each repo's manifest name and warn when it diverges.
+
 ### 5.2 `scripts/build-release-index.mjs`
 
 Node script, no dependencies. Accepts an injectable `fetch` for tests.
@@ -87,10 +91,12 @@ Node script, no dependencies. Accepts an injectable `fetch` for tests.
 
 - Triggers: `schedule` daily at 03:00 UTC; `workflow_dispatch`; `push` to `main` with `paths: [tools.json, scripts/build-release-index.mjs]`.
 - Permissions: `contents: write`.
-- Steps: checkout `main`; setup Node 22; run the script with `GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}`; checkout `gh-pages` into a subdirectory (create orphan branch if missing); copy `releases.json` and a `.nojekyll` file; commit as `github-actions[bot]` only if `git diff --quiet` reports a change; push.
+- Steps: checkout `main`; setup Node 22; run the script with `GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}`; checkout `gh-pages` into a subdirectory (create orphan branch if missing); copy `releases.json` and a `.nojekyll` file; commit on every run: `generated_at` changes each time, and the daily commit is what keeps the repository active so GitHub does not disable the schedule after 60 days without repository activity; push.
 - Action SHAs pinned, matching the existing workflows.
 
 Committing to a branch rather than using the Pages artifact deploy is deliberate: GitHub disables scheduled workflows in public repos after 60 days without repository activity, and the daily commit keeps the repo active. The branch history doubles as a log of tool releases.
+
+Whether commits pushed with the default `GITHUB_TOKEN` count as repository activity for GitHub's 60-day schedule timer is not guaranteed. If the schedule stops after two months, re-enable it (`gh workflow enable "Release index"`) or trigger `workflow_dispatch`; a small human commit also resets the timer.
 
 ### 5.5 Manual step
 
@@ -101,9 +107,12 @@ A repo admin enables GitHub Pages: Settings, Pages, source "Deploy from a branch
 ### 6.1 Platform and tooling
 
 - `@dhis2/cli-app-scripts`, current major, TypeScript template.
-- `d2.config.js`: `type: "app"`, `name: "tool-box"`, `title: "DHIS2 Admin Toolbox"` (unchanged title so DHIS2 upgrades the installed 0.1.5 in place), `minDHIS2Version: "2.40"`, `entryPoints.app: "./src/App.tsx"`.
+- `d2.config.js`: `type: "app"`, `name: "DHIS2-Admin-Toolbox"`, `title: "DHIS2 Admin Toolbox"`, `minDHIS2Version: "2.40"`, `entryPoints.app: "./src/App.tsx"`. DHIS2 identifies an installed app by its key, which is the manifest `short_name` with spaces turned into dashes; the platform writes `short_name` from `name`. The 0.1.x releases were installed under the key `DHIS2-Admin-Toolbox`, so `name` must stay exactly that for 1.0.0 to upgrade in place (verified on 2.43.1: with `name: tool-box` the app installed as a second entry). The bundle is therefore `build/bundle/DHIS2-Admin-Toolbox-<version>.zip`.
 - Custom icon: existing 96px logo copied to `public/dhis2-app-icon.png`.
-- Lint and format: `@dhis2/cli-style` (`d2-style check` / `d2-style apply`). The existing eslint config is removed.
+- Lint and format: eslint 9 with `@dhis2/config-eslint` plus `eslint-import-resolver-typescript`, and prettier with `@dhis2/config-prettier` (the scaffold defaults). `pnpm lint` runs eslint, prettier and `tsc --noEmit`.
+- Package manager: pnpm 10.13.1; `pnpm-workspace.yaml` declares darwin+linux / arm64+x64 so the host and the sandbox share one `node_modules`.
+- Data access: TanStack Query 4; DHIS2 resources through `src/utils/useApiDataQuery.ts` (app-runtime engine inside `useQuery`), the index through plain `fetch`.
+- Jest: root `jest.config.js` maps the `@/` alias and re-exports the platform's default moduleNameMapper (the platform's Jest has no alias mapping); `jest.setup.ts` loads jest-dom and sets `data-test` as the test id attribute.
 - Tests: Jest via `d2-app-scripts test`.
 - Node 22.
 
@@ -113,11 +122,11 @@ A repo admin enables GitHub Pages: Settings, Pages, source "Deploy from a branch
 
 ```ts
 export const RELEASE_INDEX_URL =
-    process.env.DHIS2_APP_RELEASE_INDEX_URL ??
+    process.env.DHIS2_RELEASE_INDEX_URL ??
     "https://dhis2.github.io/tool-box/releases.json"
 ```
 
-The environment override exists for development and testing before the index is published, and for the organisation move. The exact env-var prefix the platform exposes is confirmed during implementation and documented in the README.
+The env var is `DHIS2_RELEASE_INDEX_URL`, read from `process.env`; the platform only exposes vars with the `DHIS2_` prefix. The override exists for development and testing before the index is published, and for the organisation move. `types/global.d.ts` declares the minimal `process.env` shape `config.ts` needs, since `@types/node` is not available to app code.
 
 ### 6.3 Source layout
 
@@ -168,15 +177,16 @@ Rows are sorted by `name`.
 - On load, fetch the index, installed apps and current user in parallel. Show `CircularLoader` until the index and apps settle.
 - Header: title, then "Index updated <generated_at as local date and time>".
 - Table columns: Tool (name linked to `https://github.com/{repo}`), Installed, Latest, Released, Status, Download.
-- Status rendered as `@dhis2/ui` `Tag`: `positive` "Up to date"; "Update available" in the most attention-drawing non-error variant the installed `Tag` offers (`bold`, or `neutral` if that is all there is); default "Not installed", "No release yet" and "Unknown".
+- Status rendered as `@dhis2/ui` `Tag`: `positive` "Up to date"; `neutral bold` "Update available"; default for "Not installed", "No release yet" and "Unknown".
+- Installed column shows "-" when not installed and "Unknown" when apps are unavailable.
 - Download is a link to `download_url` opening in a new tab, or "-" when null.
 - No refresh button. Reload does the same job.
 
 ### 6.6 Error handling and notices
 
-- Index fetch fails (network, non-2xx, invalid JSON): error `NoticeBox` titled "Could not load the tool index", body names `RELEASE_INDEX_URL` and suggests checking that the browser can reach `github.io` (firewall or proxy). Nothing else renders.
+- Index fetch fails (network, non-2xx, invalid JSON): error `NoticeBox` titled "Could not load the tool index", body names `RELEASE_INDEX_URL` and suggests checking that the browser can reach `github.io` (firewall or proxy). Nothing else renders. Interpolated values in `i18n.t` must not be HTML-escaped (`interpolation: { escapeValue: false }`), otherwise the URL renders with `&#x2F;`; React already escapes rendered output, so i18next's own escaping would only double-escape it.
 - Apps endpoint fails: warning `NoticeBox` "Could not read installed apps"; table renders with Installed "Unknown" and status `unknown`.
-- Current user lacks `ALL` authority: warning `NoticeBox` "You do not have the ALL authority. DHIS2 only lists apps you have access to, so tools you cannot open may appear here as Not installed." Table renders normally. Exact wording is adjusted to what a non-superuser actually sees on a test instance.
+- Current user lacks `ALL` authority: warning `NoticeBox` titled "Limited view of installed apps": "You do not have the ALL authority. DHIS2 only lists apps you have access to, so tools you cannot open may appear here as not installed." Table renders normally. Verified on DHIS2 2.43.1: a user with only `M_dhis-web-dashboard` sees 4 apps in `/api/apps` while a superuser sees 31, and does not see the installed Toolbox.
 - Current user fetch fails: no notice, treated as having `ALL`. It is advisory only.
 
 ### 6.7 Removed
@@ -185,10 +195,10 @@ Rows are sorted by `name`.
 
 ## 7. CI and release workflows
 
-The untracked `ci.yml` and `release.yml` in the working tree are adopted with these changes. Pinned SHAs and `--ignore-scripts` install are kept.
+The untracked `ci.yml` and `release.yml` in the working tree are adopted with these changes. Pinned action SHAs are kept. pnpm is installed with `npm install -g pnpm@10.13.1` and dependencies with `pnpm install --frozen-lockfile`; `--ignore-scripts` is dropped because pnpm 10 already runs only the lifecycle scripts allowed in `pnpm-workspace.yaml`.
 
-- CI: `yarn install --frozen-lockfile --ignore-scripts`, `yarn lint` (`d2-style check`), `yarn test`, `yarn build`, upload `build/bundle/*.zip`.
-- Release: same install and build; `gh release create` attaches `build/bundle/*.zip`. Changelog extraction and tag-mismatch warning unchanged.
+- CI: on pull requests and pushes to `main`: `pnpm lint` (eslint, prettier, `tsc --noEmit`), `pnpm test`, `pnpm test:index`, `pnpm build`, upload `build/bundle/*.zip` (resolves to `build/bundle/DHIS2-Admin-Toolbox-<version>.zip`, per §6.1).
+- Release: same install and build; `gh release create` attaches `build/bundle/*.zip` (`DHIS2-Admin-Toolbox-<version>.zip`). Changelog extraction and tag-mismatch warning unchanged.
 - `webpack.yml` stays deleted.
 
 `package.json` version `1.0.0`. CHANGELOG `## [1.0.0]` entry: GitHub token removed; releases read from a published index; migrated to DHIS2 App Platform and TypeScript; status column; authority warning; minimum DHIS2 2.40.
@@ -207,23 +217,21 @@ Manual, in the sandbox:
 - Run the index script for real against GitHub (allowed by the egress firewall; eleven unauthenticated calls fit the limit). Check the output shape.
 - Dev server bound to `$SANDBOX_HOST_PORT` against a broker instance, index URL overridden to the local file. Check all statuses, the no-release row, and both error notices by breaking the URL.
 - Verify `/api/apps` visibility with a non-superuser and finalise the authority warning text.
-- Build the zip. Install 0.1.5 then 1.0.0 via `POST /api/apps` and confirm in-place upgrade (one app, version 1.0.0).
+- Build the zip (`build/bundle/DHIS2-Admin-Toolbox-<version>.zip`). Install 0.1.5 then 1.0.0 via `POST /api/apps` and confirm in-place upgrade under the `DHIS2-Admin-Toolbox` key (one app, version 1.0.0).
+- Dev-server login against a 2.43 instance required adding `http://localhost:3000` and `http://localhost:8080` to the instance's CORS allowlist (`POST /api/configuration/corsAllowlist`).
 
 After this work: multi-version pass on DHIS2 2.40 to 2.43 using the `dhis2-app-review` skill. Out of scope for this spec.
 
 ## 9. Git plan
 
 - Branch `release-index-platform` from `580ce04`.
-- Commits, in order, each self-contained and linear:
-  1. Release index: `tools.json`, script, tests, workflow.
-  2. App Platform rewrite in TypeScript.
-  3. CI and release workflows for the platform build; version 1.0.0; CHANGELOG.
-  4. README.
-- Fix-ups squashed before handoff. No merge commits. Base commit stated at handoff for host-side re-signing.
+- Commits: one commit per task (about ten), linear, fix-ups folded in; the host re-signs with `git rebase --exec 'git commit --amend --no-edit -S' 580ce04`.
+- No merge commits. Base commit stated at handoff for host-side re-signing.
 - `docs/release-index-proposal.md` is not committed.
 
 ## 10. Open items resolved during implementation
 
-- Exact env-var prefix exposed by the current `cli-app-scripts` for the index URL override.
-- Confirmed `/api/apps` visibility rule for non-superusers.
-- `Tag` variant for "Update available" once the available `@dhis2/ui` props are checked.
+- Env-var prefix: `DHIS2_RELEASE_INDEX_URL`, read from `process.env` (the platform only exposes `DHIS2_`-prefixed vars).
+- `/api/apps` visibility rule for non-superusers: confirmed on DHIS2 2.43.1 — a user with only `M_dhis-web-dashboard` sees 4 apps while a superuser sees 31 (see §6.6).
+- `Tag` variant for "Update available": `neutral bold` (see §6.5).
+- App identity: key from short_name, not title (see §6.1).
