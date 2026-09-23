@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-09-23T08:50:30.896Z",
+  "generated_at": "2026-09-23T09:11:53.652Z",
   "tools": [
     {
-      "repo": "dhis2/tool-box",
+      "repo": "dhis2-utils/tool-box",
       "name": "DHIS2 Admin Toolbox",
       "version": "0.1.5",
       "tag": "v0.1.5",
@@ -36,6 +36,15 @@
       "published_at": "2024-11-28T15:43:50Z",
       "download_url": "https://github.com/dhis2/tool-deprecated-authorities/releases/download/v0.1.0/dhis2_deprecated_authorities.zip",
       "release_url": "https://github.com/dhis2/tool-deprecated-authorities/releases/tag/v0.1.0"
+    },
+    {
+      "repo": "dhis2/tool-dq-helper",
+      "name": "DQ Metrics Configuration Tool",
+      "version": "0.1.7",
+      "tag": "v0.1.7",
+      "published_at": "2025-04-30T07:30:43Z",
+      "download_url": "https://github.com/dhis2/tool-dq-helper/releases/download/v0.1.7/tool-dq-config.zip",
+      "release_url": "https://github.com/dhis2/tool-dq-helper/releases/tag/v0.1.7"
     },
     {
       "repo": "dhis2/tool-job-status",
@@ -74,15 +83,6 @@
       "release_url": "https://github.com/dhis2/tool-translation-deduplicator/releases/tag/v0.2.0"
     },
     {
-      "repo": "dhis2/tool-user-disabler",
-      "name": "User Disabler",
-      "version": "0.1.4",
-      "tag": "v0.1.4",
-      "published_at": "2025-09-16T13:59:18Z",
-      "download_url": "https://github.com/dhis2/tool-user-disabler/releases/download/v0.1.4/user-disabler.zip",
-      "release_url": "https://github.com/dhis2/tool-user-disabler/releases/tag/v0.1.4"
-    },
-    {
       "repo": "dhis2/tool-user-role-aggregator",
       "name": "User Admin Role Aggregator",
       "version": "0.3.1",
@@ -90,6 +90,15 @@
       "published_at": "2025-09-16T14:21:16Z",
       "download_url": "https://github.com/dhis2/tool-user-role-aggregator/releases/download/v0.3.1/tool_user_role_aggregator.zip",
       "release_url": "https://github.com/dhis2/tool-user-role-aggregator/releases/tag/v0.3.1"
+    },
+    {
+      "repo": "dhis2/tool-user-disabler",
+      "name": "User Disabler",
+      "version": "0.1.4",
+      "tag": "v0.1.4",
+      "published_at": "2025-09-16T13:59:18Z",
+      "download_url": "https://github.com/dhis2/tool-user-disabler/releases/download/v0.1.4/user-disabler.zip",
+      "release_url": "https://github.com/dhis2/tool-user-disabler/releases/tag/v0.1.4"
     },
     {
       "repo": "dhis2/tool-whitespace-remover",
