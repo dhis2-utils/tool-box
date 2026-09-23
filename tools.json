@@ -1,15 +1,28 @@
 [
-    { "repo": "dhis2-utils/tool-box", "name": "DHIS2 Admin Toolbox" },
+    {
+        "repo": "dhis2-utils/tool-box",
+        "name": "DHIS2 Admin Toolbox"
+    },
     {
         "repo": "dhis2/tool-category-dimension-disabler",
         "name": "Category dimension disabler"
     },
-    { "repo": "dhis2/tool-dashboard-pruner", "name": "Dashboard pruner tool" },
+    {
+        "repo": "dhis2/tool-dashboard-pruner",
+        "name": "Dashboard pruner tool"
+    },
     {
         "repo": "dhis2/tool-deprecated-authorities",
         "name": "Deprecated Authorities"
     },
-    { "repo": "dhis2/tool-job-status", "name": "Job Status Tool" },
+    {
+        "repo": "dhis2/tool-dq-helper",
+        "name": "DQ Metrics Configuration Tool"
+    },
+    {
+        "repo": "dhis2/tool-job-status",
+        "name": "Job Status Tool"
+    },
     {
         "repo": "dhis2/tool-option-sorter",
         "name": "OptionSet Sort Order Correction Tool"
@@ -22,10 +35,13 @@
         "repo": "dhis2/tool-translation-deduplicator",
         "name": "Translation Deduplicator Tool"
     },
-    { "repo": "dhis2/tool-user-disabler", "name": "User Disabler" },
     {
         "repo": "dhis2/tool-user-role-aggregator",
         "name": "User Admin Role Aggregator"
+    },
+    {
+        "repo": "dhis2/tool-user-disabler",
+        "name": "User Disabler"
     },
     {
         "repo": "dhis2/tool-whitespace-remover",
