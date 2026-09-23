@@ -71,7 +71,7 @@ describe('Toolbox', () => {
                 (_, el) =>
                     el?.children.length === 0 &&
                     (el?.textContent?.includes(
-                        'https://dhis2.github.io/tool-box/releases.json'
+                        'https://dhis2-utils.github.io/tool-box/releases.json'
                     ) ??
                         false)
             )

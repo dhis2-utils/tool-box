@@ -3,4 +3,4 @@
 // exposes env vars with the DHIS2_ prefix, on process.env.
 export const RELEASE_INDEX_URL =
     process.env.DHIS2_RELEASE_INDEX_URL ??
-    'https://dhis2.github.io/tool-box/releases.json'
+    'https://dhis2-utils.github.io/tool-box/releases.json'

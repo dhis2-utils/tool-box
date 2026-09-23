@@ -2,7 +2,7 @@
 
 > ![Maturity: Experimental](https://img.shields.io/badge/maturity-Experimental-orange)  
 > Intended use: Give overview of system admin tools released by the DHIS2 implementation team, their latest versions, and what is installed in a particular DHIS2 instance.
-> Maintainers: HISP Centre implementation team.  
+> Maintainers: HISP Centre implementation team.
 >
 > **WARNING**
 > These tools are intended for system administrators, not end users. They are available as DHIS2 apps but have not been through the same testing as core apps. Use with care and always try them in a development environment first.
@@ -10,7 +10,7 @@
 ## How it works
 
 The app reads one static file, the release index, published at
-`https://dhis2.github.io/tool-box/releases.json`. A GitHub Actions workflow in this repo
+`https://dhis2-utils.github.io/tool-box/releases.json`. A GitHub Actions workflow in this repo
 ([release-index.yml](.github/workflows/release-index.yml)) rebuilds that file every day, and
 whenever `tools.json` changes, by asking GitHub for each tool's latest release. Nothing is
 fetched from the GitHub API by the browser, so no token or account is needed.

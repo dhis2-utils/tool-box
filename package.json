@@ -5,7 +5,7 @@
     "license": "BSD-3-Clause",
     "private": true,
     "author": "HISP Centre, University of Oslo",
-    "repository": "github:dhis2/tool-box",
+    "repository": "github:dhis2-utils/tool-box",
     "packageManager": "pnpm@10.13.1",
     "scripts": {
         "build": "d2-app-scripts build",

@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 Breaking: the app no longer asks for, stores or uses a GitHub personal access token. Minimum DHIS2 version is now 2.40.
 
-* Read tool releases from a published index (`https://dhis2.github.io/tool-box/releases.json`) instead of calling the GitHub API from the browser. The index is rebuilt daily by a GitHub Actions workflow in this repo.
+* Read tool releases from a published index (`https://dhis2-utils.github.io/tool-box/releases.json`) instead of calling the GitHub API from the browser. The index is rebuilt daily by a GitHub Actions workflow in this repo.
 * Migrate to the DHIS2 App Platform, TypeScript and `@dhis2/ui`. The platform shell provides the header bar on all supported versions.
 * Add a status column: up to date, update available, not installed, no release yet.
 * Warn users without the ALL authority that DHIS2 hides apps they cannot access.
