@@ -1,8 +1,13 @@
-.tmp
-compiled
-build
-manifest.webapp
+# DHIS2 App Platform
 node_modules
+.d2
+src/locales
+build
+
+# Local
+.DS_Store
 .vscode
-bin
-d2auth.json
+/releases.json
+
+# Superpowers SDD workspace
+.superpowers

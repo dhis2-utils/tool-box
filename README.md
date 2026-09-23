@@ -1,63 +1,79 @@
 # DHIS2 Admin Toolbox
-Basic toolbox for system administrators to perform common tasks in DHIS2.
+
+Central place to see the admin tools released by the DHIS2 implementation team, their latest versions, and what is installed on your DHIS2 instance.
 
 > **WARNING**
-> This tool is intended to be used by system administrators to perform specific tasks, it is not intended for end users. It is available as a DHIS2 app, but has not been through the same rigorous testing as normal core apps. It should be used with care, and always tested in a development environment.
+> These tools are intended for system administrators, not end users. They are available as DHIS2 apps but have not been through the same testing as core apps. Use with care and always try them in a development environment first.
+
+## How it works
+
+The app reads one static file, the release index, published at
+`https://dhis2.github.io/tool-box/releases.json`. A GitHub Actions workflow in this repo
+([release-index.yml](.github/workflows/release-index.yml)) rebuilds that file every day, and
+whenever `tools.json` changes, by asking GitHub for each tool's latest release. Nothing is
+fetched from the GitHub API by the browser, so no token or account is needed.
+
+For each tool the app shows the installed version, the latest released version, the release
+date, a status (up to date, update available, not installed, no release yet) and a download
+link. Because of CORS restrictions on GitHub release assets, tools cannot be installed from
+inside the app: download the zip and install it with the App Management app.
+
+Only apps you have access to are listed by DHIS2. Users without the `ALL` authority see a
+warning, because tools they cannot open appear as not installed.
+
+## Adding or moving a tool
+
+Edit [`tools.json`](tools.json). Each entry has the GitHub `repo` and the app's exact
+manifest `name` (that is how installed apps are matched). Pushing the change to `main`
+rebuilds the index. When the repositories move to another organisation, update the `repo`
+values here and `RELEASE_INDEX_URL` in `src/config.ts`.
+
+## Repository setup (one-time)
+
+GitHub Pages must be enabled for this repo: Settings, Pages, source "Deploy from a branch",
+branch `gh-pages`, folder `/`. The first index appears after the workflow has run once
+(Actions, "Release index", "Run workflow").
+
+## Development
+
+Requires Node 22 and pnpm 10 (`npm install -g pnpm@10`).
+
+```
+pnpm install
+pnpm start --proxy https://play.im.dhis2.org/dev-2-43
+```
+
+`pnpm start` serves the app on port 3000 with a CORS proxy on port 8080 pointed at the
+given DHIS2 instance; log in at `http://localhost:3000` with `http://localhost:8080` as the
+server. When proxying to your own DHIS2 2.41+ instance instead of a play server, browser
+login needs `http://localhost:3000` and `http://localhost:8080` in that instance's CORS
+allowlist (`POST /api/configuration/corsAllowlist` with that JSON array, or System Settings →
+Access → CORS allowlist). Before the index is published, or to test against a different
+index, set `DHIS2_RELEASE_INDEX_URL`:
+
+```
+DHIS2_RELEASE_INDEX_URL=http://localhost:8099/releases.json pnpm start
+```
+
+A local index server for `DHIS2_RELEASE_INDEX_URL` must send `Access-Control-Allow-Origin`
+(for example `npx serve --cors`).
+
+Other scripts:
+
+| Command                                | Purpose                                                                    |
+| -------------------------------------- | -------------------------------------------------------------------------- |
+| `pnpm lint`                            | eslint, prettier and TypeScript type-check                                 |
+| `pnpm test`                            | Jest tests for the app                                                     |
+| `pnpm test:index`                      | Tests for the index script                                                 |
+| `pnpm build`                           | Production bundle at `build/bundle/DHIS2-Admin-Toolbox-<version>.zip`      |
+| `node scripts/build-release-index.mjs` | Build `releases.json` locally (set `GITHUB_TOKEN` to raise the rate limit) |
+
+## Releasing
+
+Bump `version` in `package.json`, add a section to `CHANGELOG.md`, commit, then push a tag
+`vX.Y.Z`. The release workflow builds the bundle and attaches it to a GitHub release with
+the changelog section as notes.
 
 ## License
-© Copyright University of Oslo 2025
 
-## Features
-
-This app provides you a central place to view tools which have been released for DHIS2 System administrators
-by the DHIS2 Global Implementation team. The tools are available as DHIS2 apps, and can be installed in your DHIS2 instance.
-
-You will see a list of tools which are available on GitHub, which versions you have installed on your instance.
-
-Because of limitations with Cross object resource sharing (CORS), it is not possible to install the app directly into your instance. You will need to download the app from GitHub, and install it manually using the App Management App. The DHIS2 Toolbox will provide you with a link to the GitHub repository where you can download the latest versions of all tools.
-
-## Using this app
-### Install a GitHub personal access token
-
-To use this app, you need to create a personal access token on GitHub. This is used to access the GitHub API to fetch the latest releases of the DHIS2 apps. Github has a limit on the number of requests that can be made without authentication, so this is necessary to avoid hitting that limit.
-
-Head over to Github and create a new personal access token. You can do this by going to your account settings, then Developer settings, then Personal access tokens. Click on "Generate new token" and give it a name, and select the `repo` scope. Copy the token and save it somewhere safe.
-
-A copy of this key in your `userDataStore` in DHIS2, so that you don't have to enter it every time you use the app. Note that this token is stored in the `userDataStore` in DHIS2, and is only accessible to the current user. It is not shared with other users. If you want to remove the token, you can make a DELETE request to the same endpoint.
-
-## Getting started
-
-### Install dependencies
-To install app dependencies:
-
-```
-yarn install
-```
-
-### Compile to zip
-To compile the app to a .zip file that can be installed in DHIS2:
-
-```
-yarn run zip
-```
-
-### Start dev server
-To start the webpack development server:
-
-```
-yarn start
-```
-
-By default, webpack will start on port 8081, and assumes DHIS2 is running on 
-http://localhost:8080/dhis with `admin:district` as the user and password.
-
-A different DHIS2 instance can be used to develop against by adding a `d2auth.json` file like this:
-
-```
-{
-    "baseUrl": "http://localhost:9000/dev",
-    "username": "john_doe",
-    "password": "District1!"
-}
-```
-
+© Copyright University of Oslo 2025. See [LICENSE](LICENSE).

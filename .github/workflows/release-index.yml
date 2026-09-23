@@ -1,0 +1,68 @@
+name: Release index
+
+# Publishes releases.json (the list of admin tools and their latest GitHub
+# releases) to the gh-pages branch, where GitHub Pages serves it with open
+# CORS. The Toolbox app reads that one file instead of calling the GitHub API
+# from the browser. See scripts/build-release-index.mjs.
+
+on:
+    schedule:
+        - cron: '0 3 * * *'
+    workflow_dispatch:
+    push:
+        branches:
+            - main
+        paths:
+            - tools.json
+            - scripts/build-release-index.mjs
+            - .github/workflows/release-index.yml
+
+permissions:
+    contents: write
+
+concurrency:
+    group: release-index
+    cancel-in-progress: false
+
+jobs:
+    publish:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+            - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+              with:
+                  node-version: 22
+
+            - name: Build index
+              env:
+                  # The default token can read public repos at 1000 req/hour;
+                  # no personal token needed.
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: node scripts/build-release-index.mjs tools.json "$RUNNER_TEMP/releases.json"
+
+            - name: Publish to gh-pages
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  set -euo pipefail
+                  REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+                  mkdir -p "$RUNNER_TEMP/pages"
+                  cd "$RUNNER_TEMP/pages"
+                  git init -q -b gh-pages
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  # Keep history when the branch exists; start fresh otherwise.
+                  if git fetch -q "$REMOTE" gh-pages 2>/dev/null; then
+                    git reset -q --hard FETCH_HEAD
+                  else
+                    echo "gh-pages branch not found (or fetch failed); starting a new branch"
+                  fi
+                  cp "$RUNNER_TEMP/releases.json" releases.json
+                  touch .nojekyll
+                  git add releases.json .nojekyll
+                  # Always commit: generated_at changes every run, and the daily
+                  # commit keeps the repo active so GitHub does not disable this
+                  # schedule after 60 days without activity.
+                  git commit -q -m "Update release index $(date -u +%Y-%m-%dT%H:%MZ)"
+                  git push -q "$REMOTE" gh-pages
