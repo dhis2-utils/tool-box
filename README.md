@@ -1,7 +1,9 @@
 # DHIS2 Admin Toolbox
 
-Central place to see the admin tools released by the DHIS2 implementation team, their latest versions, and what is installed on your DHIS2 instance.
-
+> ![Maturity: Experimental](https://img.shields.io/badge/maturity-Experimental-orange)  
+> Intended use: Give overview of system admin tools released by the DHIS2 implementation team, their latest versions, and what is installed in a particular DHIS2 instance.
+> Maintainers: HISP Centre implementation team.  
+>
 > **WARNING**
 > These tools are intended for system administrators, not end users. They are available as DHIS2 apps but have not been through the same testing as core apps. Use with care and always try them in a development environment first.
 
