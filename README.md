@@ -67,7 +67,7 @@ Other scripts:
 | `pnpm lint`                            | eslint, prettier and TypeScript type-check                                 |
 | `pnpm test`                            | Jest tests for the app                                                     |
 | `pnpm test:index`                      | Tests for the index script                                                 |
-| `pnpm build`                           | Production bundle at `build/bundle/DHIS2-Admin-Toolbox-<version>.zip`      |
+| `pnpm build`                           | Production bundle at `build/bundle/DHIS2 Admin Toolbox-<version>.zip`      |
 | `node scripts/build-release-index.mjs` | Build `releases.json` locally (set `GITHUB_TOKEN` to raise the rate limit) |
 
 ## Releasing
