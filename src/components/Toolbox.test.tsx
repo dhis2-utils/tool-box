@@ -6,7 +6,7 @@ import { renderWithProviders } from '@/test-utils/renderWithProviders'
 declare const global: { fetch: typeof fetch }
 
 const index = {
-    generated_at: '2026-09-22T03:00:12Z',
+    generated_at: new Date().toISOString(),
     tools: [
         {
             repo: 'dhis2/tool-box',
@@ -56,6 +56,21 @@ describe('Toolbox', () => {
             'Update available'
         )
         expect(screen.queryByRole('alert')).not.toBeInTheDocument()
+        expect(
+            screen.queryByText('The tool index is out of date')
+        ).not.toBeInTheDocument()
+    })
+
+    it('warns when the index has not been updated for days, and still shows the table', async () => {
+        const stale = { ...index, generated_at: '2026-01-01T03:00:00Z' }
+        global.fetch = jest.fn(async () =>
+            responseWith(200, stale)
+        ) as unknown as typeof fetch
+        renderWithProviders(<Toolbox />, { apps, me: superuser })
+        expect(
+            await screen.findByText('The tool index is out of date')
+        ).toBeInTheDocument()
+        expect(screen.getByRole('table')).toBeInTheDocument()
     })
 
     it('shows only an error notice naming the URL when the index cannot be loaded', async () => {

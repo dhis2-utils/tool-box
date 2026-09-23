@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-09-22T11:59:04.912Z\n"
-"PO-Revision-Date: 2026-09-22T11:59:04.913Z\n"
+"POT-Creation-Date: 2026-09-23T09:42:04.076Z\n"
+"PO-Revision-Date: 2026-09-23T09:42:04.076Z\n"
 
 msgid "Could not load the tool index"
 msgstr "Could not load the tool index"
@@ -20,6 +20,16 @@ msgstr ""
 
 msgid "Index updated {{when}}"
 msgstr "Index updated {{when}}"
+
+msgid "The tool index is out of date"
+msgstr "The tool index is out of date"
+
+msgid ""
+"The index has not been updated since {{when}}, so newer releases may be "
+"missing. Check the \"Release index\" workflow in the tool-box repository."
+msgstr ""
+"The index has not been updated since {{when}}, so newer releases may be "
+"missing. Check the \"Release index\" workflow in the tool-box repository."
 
 msgid "Could not read installed apps"
 msgstr "Could not read installed apps"
@@ -56,6 +66,12 @@ msgstr "No release yet"
 msgid "Unknown"
 msgstr "Unknown"
 
+msgid "Download"
+msgstr "Download"
+
+msgid "Release page"
+msgstr "Release page"
+
 msgid "Tool"
 msgstr "Tool"
 
@@ -70,9 +86,6 @@ msgstr "Released"
 
 msgid "Status"
 msgstr "Status"
-
-msgid "Download"
-msgstr "Download"
 
 msgctxt "Application title"
 msgid "__MANIFEST_APP_TITLE"
