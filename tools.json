@@ -1,5 +1,5 @@
 [
-    { "repo": "dhis2/tool-box", "name": "DHIS2 Admin Toolbox" },
+    { "repo": "dhis2-utils/tool-box", "name": "DHIS2 Admin Toolbox" },
     {
         "repo": "dhis2/tool-category-dimension-disabler",
         "name": "Category dimension disabler"
