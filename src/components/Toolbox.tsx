@@ -7,6 +7,7 @@ import { RELEASE_INDEX_URL } from '@/config'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
 import { useInstalledApps } from '@/hooks/useInstalledApps'
 import { useReleaseIndex } from '@/hooks/useReleaseIndex'
+import { isIndexStale } from '@/lib/isIndexStale'
 import { mergeTools } from '@/lib/mergeTools'
 
 const formatDateTime = (iso: string): string =>
@@ -73,6 +74,20 @@ export const Toolbox = () => {
                     when: formatDateTime(index.data.generated_at),
                 })}
             </p>
+            {isIndexStale(index.data.generated_at, new Date()) && (
+                <NoticeBox
+                    warning
+                    title={i18n.t('The tool index is out of date')}
+                >
+                    {i18n.t(
+                        'The index has not been updated since {{when}}, so newer releases may be missing. Check the "Release index" workflow in the tool-box repository.',
+                        {
+                            when: formatDateTime(index.data.generated_at),
+                            interpolation: { escapeValue: false },
+                        }
+                    )}
+                </NoticeBox>
+            )}
             {apps.isError && (
                 <NoticeBox
                     warning

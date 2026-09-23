@@ -37,6 +37,12 @@ jobs:
             - name: Build
               run: pnpm build
 
+            # The bundle is named after d2.config.js `name`, which has spaces
+            # (see the comment there); GitHub would turn them into dots.
+            - name: Name the bundle without spaces
+              run: |
+                  for f in build/bundle/*.zip; do mv "$f" "${f// /-}"; done
+
             - name: Extract changelog section
               # Tags are protected: they cannot be deleted or moved. So a missing
               # changelog section must NOT fail the job — that would burn the

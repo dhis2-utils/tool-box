@@ -107,7 +107,7 @@ A repo admin enables GitHub Pages: Settings, Pages, source "Deploy from a branch
 ### 6.1 Platform and tooling
 
 - `@dhis2/cli-app-scripts`, current major, TypeScript template.
-- `d2.config.js`: `type: "app"`, `name: "DHIS2-Admin-Toolbox"`, `title: "DHIS2 Admin Toolbox"`, `minDHIS2Version: "2.40"`, `entryPoints.app: "./src/App.tsx"`. DHIS2 identifies an installed app by its key, which is the manifest `short_name` with spaces turned into dashes; the platform writes `short_name` from `name`. The 0.1.x releases were installed under the key `DHIS2-Admin-Toolbox`, so `name` must stay exactly that for 1.0.0 to upgrade in place (verified on 2.43.1: with `name: tool-box` the app installed as a second entry). The bundle is therefore `build/bundle/DHIS2-Admin-Toolbox-<version>.zip`.
+- `d2.config.js`: `type: "app"`, `name: "DHIS2 Admin Toolbox"`, `title: "DHIS2 Admin Toolbox"`, `minDHIS2Version: "2.40"`, `entryPoints.app: "./src/App.tsx"`. DHIS2 identifies an installed app by its key, which is the manifest `short_name` with spaces turned into dashes; the platform writes `short_name` from `name`. DHIS2 also derives the app's access authority from `short_name`, differently: spaces become underscores and dashes are dropped. The 0.1.x releases had `short_name` "DHIS2 Admin Toolbox" (key `DHIS2-Admin-Toolbox`, authority `M_DHIS2_Admin_Toolbox`), so `name` must be exactly that string for 1.0.0 to upgrade in place (verified on 2.43.1: with `name: tool-box` the app installed as a second entry) without revoking access granted through user roles (with `name: DHIS2-Admin-Toolbox` the key matched but the authority became `M_DHIS2AdminToolbox`; found in the 2026-09-23 review, verified on 2.40–2.43). The bundle is therefore `build/bundle/DHIS2 Admin Toolbox-<version>.zip`; the release workflow renames it to `DHIS2-Admin-Toolbox-<version>.zip` before attaching it.
 - Custom icon: existing 96px logo copied to `public/dhis2-app-icon.png`.
 - Lint and format: eslint 9 with `@dhis2/config-eslint` plus `eslint-import-resolver-typescript`, and prettier with `@dhis2/config-prettier` (the scaffold defaults). `pnpm lint` runs eslint, prettier and `tsc --noEmit`.
 - Package manager: pnpm 10.13.1; `pnpm-workspace.yaml` declares darwin+linux / arm64+x64 so the host and the sandbox share one `node_modules`.
@@ -197,8 +197,8 @@ Rows are sorted by `name`.
 
 The untracked `ci.yml` and `release.yml` in the working tree are adopted with these changes. Pinned action SHAs are kept. pnpm is installed with `npm install -g pnpm@10.13.1` and dependencies with `pnpm install --frozen-lockfile`; `--ignore-scripts` is dropped because pnpm 10 already runs only the lifecycle scripts allowed in `pnpm-workspace.yaml`.
 
-- CI: on pull requests and pushes to `main`: `pnpm lint` (eslint, prettier, `tsc --noEmit`), `pnpm test`, `pnpm test:index`, `pnpm build`, upload `build/bundle/*.zip` (resolves to `build/bundle/DHIS2-Admin-Toolbox-<version>.zip`, per §6.1).
-- Release: same install and build; `gh release create` attaches `build/bundle/*.zip` (`DHIS2-Admin-Toolbox-<version>.zip`). Changelog extraction and tag-mismatch warning unchanged.
+- CI: on pull requests and pushes to `main`: `pnpm lint` (eslint, prettier, `tsc --noEmit`), `pnpm test`, `pnpm test:index`, `pnpm build`, upload `build/bundle/*.zip` (resolves to `build/bundle/DHIS2 Admin Toolbox-<version>.zip`, per §6.1).
+- Release: same install and build; `gh release create` attaches `build/bundle/*.zip`, renamed to `DHIS2-Admin-Toolbox-<version>.zip`. Changelog extraction and tag-mismatch warning unchanged.
 - `webpack.yml` stays deleted.
 
 `package.json` version `1.0.0`. CHANGELOG `## [1.0.0]` entry: GitHub token removed; releases read from a published index; migrated to DHIS2 App Platform and TypeScript; status column; authority warning; minimum DHIS2 2.40.
@@ -217,7 +217,7 @@ Manual, in the sandbox:
 - Run the index script for real against GitHub (allowed by the egress firewall; eleven unauthenticated calls fit the limit). Check the output shape.
 - Dev server bound to `$SANDBOX_HOST_PORT` against a broker instance, index URL overridden to the local file. Check all statuses, the no-release row, and both error notices by breaking the URL.
 - Verify `/api/apps` visibility with a non-superuser and finalise the authority warning text.
-- Build the zip (`build/bundle/DHIS2-Admin-Toolbox-<version>.zip`). Install 0.1.5 then 1.0.0 via `POST /api/apps` and confirm in-place upgrade under the `DHIS2-Admin-Toolbox` key (one app, version 1.0.0).
+- Build the zip (`build/bundle/DHIS2 Admin Toolbox-<version>.zip`). Install 0.1.5 then 1.0.0 via `POST /api/apps` and confirm in-place upgrade under the `DHIS2-Admin-Toolbox` key (one app, version 1.0.0) with the authority still `M_DHIS2_Admin_Toolbox`.
 - Dev-server login against a 2.43 instance required adding `http://localhost:3000` and `http://localhost:8080` to the instance's CORS allowlist (`POST /api/configuration/corsAllowlist`).
 
 After this work: multi-version pass on DHIS2 2.40 to 2.43 using the `dhis2-app-review` skill. Out of scope for this spec.

@@ -63,6 +63,28 @@ const ExternalLink = ({
     </a>
 )
 
+const isHttps = (url: string | null): url is string =>
+    url !== null && url.startsWith('https://')
+
+// A release without a zip asset still gets a way to it: its release page.
+const DownloadCell = ({ row }: { row: ToolRow }) => {
+    if (isHttps(row.downloadUrl)) {
+        return (
+            <ExternalLink href={row.downloadUrl}>
+                {i18n.t('Download')}
+            </ExternalLink>
+        )
+    }
+    if (isHttps(row.releaseUrl)) {
+        return (
+            <ExternalLink href={row.releaseUrl}>
+                {i18n.t('Release page')}
+            </ExternalLink>
+        )
+    }
+    return <>-</>
+}
+
 const installedLabel = (row: ToolRow): string => {
     if (row.installedVersion !== null) {
         return row.installedVersion
@@ -107,14 +129,7 @@ export const ToolsTable = ({ rows }: { rows: ToolRow[] }) => (
                         <StatusTag status={row.status} />
                     </DataTableCell>
                     <DataTableCell>
-                        {row.downloadUrl !== null &&
-                        row.downloadUrl.startsWith('https://') ? (
-                            <ExternalLink href={row.downloadUrl}>
-                                {i18n.t('Download')}
-                            </ExternalLink>
-                        ) : (
-                            '-'
-                        )}
+                        <DownloadCell row={row} />
                     </DataTableCell>
                 </DataTableRow>
             ))}

@@ -89,10 +89,28 @@ describe('ToolsTable', () => {
         expect(formatDate('not a date')).toBe('-')
     })
 
-    it('renders no Download link and a dash for a non-https download URL', () => {
+    it('links the release page when the release has no zip asset', () => {
+        render(<ToolsTable rows={[row({ downloadUrl: null })]} />)
+        expect(
+            screen.queryByRole('link', { name: 'Download' })
+        ).not.toBeInTheDocument()
+        expect(
+            screen.getByRole('link', { name: 'Release page' })
+        ).toHaveAttribute('href', 'https://example.invalid/v1.2.0')
+    })
+
+    it('renders no link and a dash for non-https download and release URLs', () => {
         render(
-            <ToolsTable rows={[row({ downloadUrl: 'javascript:alert(1)' })]} />
+            <ToolsTable
+                rows={[
+                    row({
+                        downloadUrl: 'javascript:alert(1)',
+                        releaseUrl: 'javascript:alert(2)',
+                    }),
+                ]}
+            />
         )
+        expect(screen.getAllByRole('link')).toHaveLength(1)
         expect(
             screen.queryByRole('link', { name: 'Download' })
         ).not.toBeInTheDocument()
