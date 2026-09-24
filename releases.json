@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-09-23T09:11:53.652Z",
+  "generated_at": "2026-09-24T07:58:02.147Z",
   "tools": [
     {
       "repo": "dhis2-utils/tool-box",
       "name": "DHIS2 Admin Toolbox",
-      "version": "0.1.5",
-      "tag": "v0.1.5",
-      "published_at": "2025-09-17T10:53:55Z",
-      "download_url": "https://github.com/dhis2-utils/tool-box/releases/download/v0.1.5/tool-box.zip",
-      "release_url": "https://github.com/dhis2-utils/tool-box/releases/tag/v0.1.5"
+      "version": "1.0.0",
+      "tag": "v1.0.0",
+      "published_at": "2026-09-23T10:01:09Z",
+      "download_url": "https://github.com/dhis2-utils/tool-box/releases/download/v1.0.0/DHIS2-Admin-Toolbox-1.0.0.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-box/releases/tag/v1.0.0"
     },
     {
       "repo": "dhis2/tool-category-dimension-disabler",
