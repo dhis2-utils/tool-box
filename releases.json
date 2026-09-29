@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T09:08:00.573Z",
+  "generated_at": "2026-09-29T09:17:50.228Z",
   "tools": [
     {
       "repo": "dhis2-utils/tool-box",
@@ -13,11 +13,11 @@
     {
       "repo": "dhis2/tool-category-dimension-disabler",
       "name": "Category dimension disabler",
-      "version": "0.1.0",
-      "tag": "v0.1.0",
-      "published_at": "2024-12-07T08:41:04Z",
-      "download_url": "https://github.com/dhis2/tool-category-dimension-disabler/releases/download/v0.1.0/tool-category-dimension-disabler.zip",
-      "release_url": "https://github.com/dhis2/tool-category-dimension-disabler/releases/tag/v0.1.0"
+      "version": "1.0.0",
+      "tag": "v1.0.0",
+      "published_at": "2026-09-29T08:32:43Z",
+      "download_url": "https://github.com/dhis2/tool-category-dimension-disabler/releases/download/v1.0.0/data-dimension-disabler-1.0.0.zip",
+      "release_url": "https://github.com/dhis2/tool-category-dimension-disabler/releases/tag/v1.0.0"
     },
     {
       "repo": "dhis2/tool-dashboard-pruner",
