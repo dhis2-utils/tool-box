@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T09:09:10.882Z",
+  "generated_at": "2026-10-01T09:36:34.552Z",
   "tools": [
     {
       "repo": "dhis2-utils/tool-box",
@@ -16,98 +16,98 @@
       "version": "1.0.0",
       "tag": "v1.0.0",
       "published_at": "2026-09-29T08:32:43Z",
-      "download_url": "https://github.com/dhis2/tool-category-dimension-disabler/releases/download/v1.0.0/data-dimension-disabler-1.0.0.zip",
-      "release_url": "https://github.com/dhis2/tool-category-dimension-disabler/releases/tag/v1.0.0"
+      "download_url": "https://github.com/dhis2-utils/tool-data-dimension-disabler/releases/download/v1.0.0/data-dimension-disabler-1.0.0.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-data-dimension-disabler/releases/tag/v1.0.0"
     },
     {
       "repo": "dhis2/tool-dashboard-pruner",
       "name": "Dashboard pruner tool",
-      "version": "0.1.9",
-      "tag": "v0.1.9",
-      "published_at": "2025-11-20T08:22:33Z",
-      "download_url": "https://github.com/dhis2/tool-dashboard-pruner/releases/download/v0.1.9/tool-dashboard-pruner.zip",
-      "release_url": "https://github.com/dhis2/tool-dashboard-pruner/releases/tag/v0.1.9"
+      "version": "1.0.0",
+      "tag": "v1.0.0",
+      "published_at": "2026-10-01T08:58:42Z",
+      "download_url": "https://github.com/dhis2-utils/tool-dashboard-pruner/releases/download/v1.0.0/Dashboard-Pruner-Tool-1.0.0.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-dashboard-pruner/releases/tag/v1.0.0"
     },
     {
       "repo": "dhis2/tool-deprecated-authorities",
       "name": "Deprecated Authorities",
-      "version": "0.1.0",
-      "tag": "v0.1.0",
-      "published_at": "2024-11-28T15:43:50Z",
-      "download_url": "https://github.com/dhis2/tool-deprecated-authorities/releases/download/v0.1.0/dhis2_deprecated_authorities.zip",
-      "release_url": "https://github.com/dhis2/tool-deprecated-authorities/releases/tag/v0.1.0"
+      "version": null,
+      "tag": null,
+      "published_at": null,
+      "download_url": null,
+      "release_url": null
     },
     {
       "repo": "dhis2/tool-dq-helper",
       "name": "DQ Metrics Configuration Tool",
-      "version": "0.1.7",
-      "tag": "v0.1.7",
-      "published_at": "2025-04-30T07:30:43Z",
-      "download_url": "https://github.com/dhis2/tool-dq-helper/releases/download/v0.1.7/tool-dq-config.zip",
-      "release_url": "https://github.com/dhis2/tool-dq-helper/releases/tag/v0.1.7"
+      "version": "1.0.1",
+      "tag": "v1.0.1",
+      "published_at": "2026-09-30T14:02:46Z",
+      "download_url": "https://github.com/dhis2-utils/tool-dq-helper/releases/download/v1.0.1/tool-dq-helper-1.0.1.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-dq-helper/releases/tag/v1.0.1"
     },
     {
       "repo": "dhis2/tool-job-status",
       "name": "Job Status Tool",
-      "version": "0.2.0",
-      "tag": "v0.2.0",
-      "published_at": "2025-09-08T07:20:17Z",
-      "download_url": "https://github.com/dhis2/tool-job-status/releases/download/v0.2.0/tool-job-status.zip",
-      "release_url": "https://github.com/dhis2/tool-job-status/releases/tag/v0.2.0"
+      "version": "1.0.0",
+      "tag": "v1.0.0",
+      "published_at": "2026-09-30T14:44:13Z",
+      "download_url": "https://github.com/dhis2-utils/tool-job-status/releases/download/v1.0.0/tool-job-status-1.0.0.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-job-status/releases/tag/v1.0.0"
     },
     {
       "repo": "dhis2/tool-option-sorter",
       "name": "OptionSet Sort Order Correction Tool",
-      "version": "0.2.1",
-      "tag": "v0.2.1",
-      "published_at": "2025-09-05T06:28:07Z",
-      "download_url": "https://github.com/dhis2/tool-option-sorter/releases/download/v0.2.1/tool_optionset_sorter.zip",
-      "release_url": "https://github.com/dhis2/tool-option-sorter/releases/tag/v0.2.1"
+      "version": null,
+      "tag": null,
+      "published_at": null,
+      "download_url": null,
+      "release_url": null
     },
     {
       "repo": "dhis2/tool-prv-validator",
       "name": "Program Rule Validator Tool",
-      "version": "0.1.6",
-      "tag": "v0.1.6",
-      "published_at": "2025-06-18T12:34:36Z",
-      "download_url": "https://github.com/dhis2/tool-prv-validator/releases/download/v0.1.6/tool-pr-validator.zip",
-      "release_url": "https://github.com/dhis2/tool-prv-validator/releases/tag/v0.1.6"
+      "version": "1.0.1",
+      "tag": "v1.0.1",
+      "published_at": "2026-10-01T05:28:42Z",
+      "download_url": "https://github.com/dhis2-utils/tool-program-rule-validator/releases/download/v1.0.1/tool-program-rule-validator-1.0.1.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-program-rule-validator/releases/tag/v1.0.1"
     },
     {
       "repo": "dhis2/tool-translation-deduplicator",
       "name": "Translation Deduplicator Tool",
-      "version": "0.2.0",
-      "tag": "v0.2.0",
-      "published_at": "2025-09-05T08:20:03Z",
-      "download_url": "https://github.com/dhis2/tool-translation-deduplicator/releases/download/v0.2.0/tool-translation-deduplicator.zip",
-      "release_url": "https://github.com/dhis2/tool-translation-deduplicator/releases/tag/v0.2.0"
+      "version": "1.0.0",
+      "tag": "v1.0.0",
+      "published_at": "2026-09-30T14:42:21Z",
+      "download_url": "https://github.com/dhis2-utils/tool-translation-deduplicator/releases/download/v1.0.0/tool-translation-deduplicator-1.0.0.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-translation-deduplicator/releases/tag/v1.0.0"
     },
     {
       "repo": "dhis2/tool-user-role-aggregator",
       "name": "User Admin Role Aggregator",
-      "version": "0.3.1",
-      "tag": "v0.3.1",
-      "published_at": "2025-09-16T14:21:16Z",
-      "download_url": "https://github.com/dhis2/tool-user-role-aggregator/releases/download/v0.3.1/tool_user_role_aggregator.zip",
-      "release_url": "https://github.com/dhis2/tool-user-role-aggregator/releases/tag/v0.3.1"
+      "version": "1.0.0",
+      "tag": "v1.0.0",
+      "published_at": "2026-09-30T14:43:21Z",
+      "download_url": "https://github.com/dhis2-utils/tool-user-role-aggregator/releases/download/v1.0.0/tool-user-role-aggregator-1.0.0.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-user-role-aggregator/releases/tag/v1.0.0"
     },
     {
       "repo": "dhis2/tool-user-disabler",
       "name": "User Disabler",
-      "version": "0.1.4",
-      "tag": "v0.1.4",
-      "published_at": "2025-09-16T13:59:18Z",
-      "download_url": "https://github.com/dhis2/tool-user-disabler/releases/download/v0.1.4/user-disabler.zip",
-      "release_url": "https://github.com/dhis2/tool-user-disabler/releases/tag/v0.1.4"
+      "version": "1.0.0",
+      "tag": "v1.0.0",
+      "published_at": "2026-09-30T14:42:57Z",
+      "download_url": "https://github.com/dhis2-utils/tool-user-disabler/releases/download/v1.0.0/tool-user-disabler-1.0.0.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-user-disabler/releases/tag/v1.0.0"
     },
     {
       "repo": "dhis2/tool-whitespace-remover",
       "name": "Whitespace Cleaner Tool",
-      "version": "0.2.0",
-      "tag": "v0.2.0",
-      "published_at": "2025-09-05T07:00:25Z",
-      "download_url": "https://github.com/dhis2/tool-whitespace-remover/releases/download/v0.2.0/tool-whitespace-cleaner.zip",
-      "release_url": "https://github.com/dhis2/tool-whitespace-remover/releases/tag/v0.2.0"
+      "version": "1.0.0",
+      "tag": "v1.0.0",
+      "published_at": "2026-09-30T14:44:00Z",
+      "download_url": "https://github.com/dhis2-utils/tool-whitespace-remover/releases/download/v1.0.0/tool-whitespace-remover-1.0.0.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-whitespace-remover/releases/tag/v1.0.0"
     }
   ]
 }
