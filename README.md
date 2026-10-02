@@ -71,7 +71,8 @@ Other scripts:
 
 | Command                                | Purpose                                                                    |
 | -------------------------------------- | -------------------------------------------------------------------------- |
-| `pnpm lint`                            | eslint, prettier and TypeScript type-check                                 |
+| `pnpm lint`                            | eslint and prettier                                                        |
+| `pnpm typecheck`                       | TypeScript type-check                                                      |
 | `pnpm test`                            | Jest tests for the app                                                     |
 | `pnpm test:index`                      | Tests for the index script                                                 |
 | `pnpm build`                           | Production bundle at `build/bundle/tool-box-<version>.zip`                 |
@@ -79,9 +80,11 @@ Other scripts:
 
 ## Releasing
 
-Bump `version` in `package.json`, add a section to `CHANGELOG.md`, commit, then push a tag
-`vX.Y.Z`. The release workflow builds the bundle and attaches it to a GitHub release with
-the changelog section as notes.
+Follow the release procedure in
+[reference-tool-conventions](https://github.com/dhis2-utils/reference-tool-conventions/blob/main/RELEASE-WORKFLOW.md):
+bump `version` in `package.json`, add a `## [x.y.z]` section to `CHANGELOG.md`, merge to
+`main`, then push a tag `vx.y.z` on the merged commit. The release workflow builds the bundle
+and attaches it to a GitHub release with the changelog section as notes.
 
 ## License
 

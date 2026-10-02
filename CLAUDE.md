@@ -11,4 +11,4 @@ DHIS2 App Platform app (TypeScript, React 18, `@dhis2/ui`, TanStack Query 4) wit
 - `d2.config.js` `name` is the app key, `tool-box` (the repo name, per `reference-tool-conventions`). The platform copies it to the manifest `short_name`, from which DHIS2 derives the app key and the app authority (`M_toolbox`); it must never change again, or upgrades install a second app and revoke role-based access. `src/appIdentity.test.ts` guards it. `title` (`DHIS2 Admin Toolbox`) is the display name and what `tools.json` matches on.
 - Data access goes through `src/utils/useApiDataQuery.ts` (app-runtime engine inside TanStack
   Query), never `useDataQuery` directly. Tests wrap with `src/test-utils/renderWithProviders.tsx`.
-- Verify with `pnpm lint && pnpm test && pnpm test:index`. Design spec and plan under `docs/superpowers/`.
+- Verify with `pnpm lint && pnpm typecheck && pnpm test && pnpm test:index`. CI and release workflows follow the `app-platform/` templates in `dhis2-utils/reference-tool-conventions`; copy template changes rather than editing them in place. Design spec and plan under `docs/superpowers/`.

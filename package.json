@@ -13,7 +13,8 @@
         "test": "d2-app-scripts test",
         "test:index": "node --test scripts/*.test.mjs",
         "deploy": "d2-app-scripts deploy",
-        "lint": "eslint && prettier -c . && tsc --noEmit",
+        "lint": "eslint && prettier -c .",
+        "typecheck": "tsc --noEmit",
         "format": "prettier . -w"
     },
     "dependencies": {
