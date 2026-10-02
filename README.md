@@ -1,10 +1,10 @@
 # DHIS2 Admin Toolbox
 
 > ![Maturity: Experimental](https://img.shields.io/badge/maturity-Experimental-orange)  
-> Intended use: Give overview of system admin tools released by the DHIS2 implementation team, their latest versions, and what is installed in a particular DHIS2 instance.
+> Intended use: Give overview of system admin tools released by the DHIS2 implementation team, their latest versions, and what is installed in a particular DHIS2 instance.  
 > Maintainers: HISP Centre implementation team.
->
-> **WARNING**
+
+> [!WARNING]
 > These tools are intended for system administrators, not end users. They are available as DHIS2 apps but have not been through the same testing as core apps. Use with care and always try them in a development environment first.
 
 ## How it works
@@ -22,6 +22,14 @@ inside the app: download the zip and install it with the App Management app.
 
 Only apps you have access to are listed by DHIS2. Users without the `ALL` authority see a
 warning, because tools they cannot open appear as not installed.
+
+## Known limitations
+
+- Installed apps are matched to tools by display name. A tool installed at a release with a
+  different display name, such as a 0.x release from before the tools were renamed, shows as
+  not installed.
+- The index is rebuilt daily, so a new tool release can take up to a day to appear.
+- Tools cannot be installed from inside the app (see above).
 
 ## Upgrading from 1.0.0 or earlier
 
