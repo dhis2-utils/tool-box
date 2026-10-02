@@ -23,6 +23,13 @@ inside the app: download the zip and install it with the App Management app.
 Only apps you have access to are listed by DHIS2. Users without the `ALL` authority see a
 warning, because tools they cannot open appear as not installed.
 
+## Upgrading from 1.0.0 or earlier
+
+The app key changed from `DHIS2-Admin-Toolbox` to `tool-box` after 1.0.0, so DHIS2 installs
+the new version as a separate app. Install it, uninstall the old "DHIS2 Admin Toolbox" in App
+Management, and add the new app to every user role that gave access to the old one. Bookmarks
+to the old app URL stop working.
+
 ## Adding or moving a tool
 
 Edit [`tools.json`](tools.json). Each entry has the GitHub `repo` and the app's exact
@@ -67,7 +74,7 @@ Other scripts:
 | `pnpm lint`                            | eslint, prettier and TypeScript type-check                                 |
 | `pnpm test`                            | Jest tests for the app                                                     |
 | `pnpm test:index`                      | Tests for the index script                                                 |
-| `pnpm build`                           | Production bundle at `build/bundle/DHIS2 Admin Toolbox-<version>.zip`      |
+| `pnpm build`                           | Production bundle at `build/bundle/tool-box-<version>.zip`                 |
 | `node scripts/build-release-index.mjs` | Build `releases.json` locally (set `GITHUB_TOKEN` to raise the rate limit) |
 
 ## Releasing
