@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-04T08:59:16.696Z",
+  "generated_at": "2026-10-04T14:45:12.446Z",
   "tools": [
     {
       "repo": "dhis2-utils/tool-box",
@@ -11,17 +11,8 @@
       "release_url": "https://github.com/dhis2-utils/tool-box/releases/tag/v1.0.0"
     },
     {
-      "repo": "dhis2/tool-category-dimension-disabler",
-      "name": "Category dimension disabler",
-      "version": "1.0.0",
-      "tag": "v1.0.0",
-      "published_at": "2026-09-29T08:32:43Z",
-      "download_url": "https://github.com/dhis2-utils/tool-data-dimension-disabler/releases/download/v1.0.0/data-dimension-disabler-1.0.0.zip",
-      "release_url": "https://github.com/dhis2-utils/tool-data-dimension-disabler/releases/tag/v1.0.0"
-    },
-    {
-      "repo": "dhis2/tool-dashboard-pruner",
-      "name": "Dashboard pruner tool",
+      "repo": "dhis2-utils/tool-dashboard-pruner",
+      "name": "Dashboard Pruner Tool",
       "version": "1.0.0",
       "tag": "v1.0.0",
       "published_at": "2026-10-01T08:58:42Z",
@@ -29,16 +20,16 @@
       "release_url": "https://github.com/dhis2-utils/tool-dashboard-pruner/releases/tag/v1.0.0"
     },
     {
-      "repo": "dhis2/tool-deprecated-authorities",
-      "name": "Deprecated Authorities",
-      "version": null,
-      "tag": null,
-      "published_at": null,
-      "download_url": null,
-      "release_url": null
+      "repo": "dhis2-utils/tool-data-dimension-disabler",
+      "name": "Data Dimension Disabler",
+      "version": "1.0.0",
+      "tag": "v1.0.0",
+      "published_at": "2026-09-29T08:32:43Z",
+      "download_url": "https://github.com/dhis2-utils/tool-data-dimension-disabler/releases/download/v1.0.0/data-dimension-disabler-1.0.0.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-data-dimension-disabler/releases/tag/v1.0.0"
     },
     {
-      "repo": "dhis2/tool-dq-helper",
+      "repo": "dhis2-utils/tool-dq-helper",
       "name": "DQ Metrics Configuration Tool",
       "version": "1.0.1",
       "tag": "v1.0.1",
@@ -47,7 +38,16 @@
       "release_url": "https://github.com/dhis2-utils/tool-dq-helper/releases/tag/v1.0.1"
     },
     {
-      "repo": "dhis2/tool-job-status",
+      "repo": "dhis2-utils/tool-group-set-manager",
+      "name": "Group Set Integrity Tool",
+      "version": "1.0.0",
+      "tag": "v1.0.0",
+      "published_at": "2026-09-22T11:16:54Z",
+      "download_url": "https://github.com/dhis2-utils/tool-group-set-manager/releases/download/v1.0.0/group-set-integrity-tool-1.0.0.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-group-set-manager/releases/tag/v1.0.0"
+    },
+    {
+      "repo": "dhis2-utils/tool-job-status",
       "name": "Job Status Tool",
       "version": "1.0.0",
       "tag": "v1.0.0",
@@ -56,16 +56,7 @@
       "release_url": "https://github.com/dhis2-utils/tool-job-status/releases/tag/v1.0.0"
     },
     {
-      "repo": "dhis2/tool-option-sorter",
-      "name": "OptionSet Sort Order Correction Tool",
-      "version": null,
-      "tag": null,
-      "published_at": null,
-      "download_url": null,
-      "release_url": null
-    },
-    {
-      "repo": "dhis2/tool-prv-validator",
+      "repo": "dhis2-utils/tool-program-rule-validator",
       "name": "Program Rule Validator Tool",
       "version": "1.0.1",
       "tag": "v1.0.1",
@@ -74,8 +65,8 @@
       "release_url": "https://github.com/dhis2-utils/tool-program-rule-validator/releases/tag/v1.0.1"
     },
     {
-      "repo": "dhis2/tool-translation-deduplicator",
-      "name": "Translation Deduplicator Tool",
+      "repo": "dhis2-utils/tool-translation-deduplicator",
+      "name": "Translation Deduplication Tool",
       "version": "1.0.0",
       "tag": "v1.0.0",
       "published_at": "2026-09-30T14:42:21Z",
@@ -83,7 +74,16 @@
       "release_url": "https://github.com/dhis2-utils/tool-translation-deduplicator/releases/tag/v1.0.0"
     },
     {
-      "repo": "dhis2/tool-user-role-aggregator",
+      "repo": "dhis2-utils/tool-user-disabler",
+      "name": "User Disabler Tool",
+      "version": "1.0.0",
+      "tag": "v1.0.0",
+      "published_at": "2026-09-30T14:42:57Z",
+      "download_url": "https://github.com/dhis2-utils/tool-user-disabler/releases/download/v1.0.0/tool-user-disabler-1.0.0.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-user-disabler/releases/tag/v1.0.0"
+    },
+    {
+      "repo": "dhis2-utils/tool-user-role-aggregator",
       "name": "User Admin Role Aggregator",
       "version": "1.0.0",
       "tag": "v1.0.0",
@@ -92,17 +92,8 @@
       "release_url": "https://github.com/dhis2-utils/tool-user-role-aggregator/releases/tag/v1.0.0"
     },
     {
-      "repo": "dhis2/tool-user-disabler",
-      "name": "User Disabler",
-      "version": "1.0.0",
-      "tag": "v1.0.0",
-      "published_at": "2026-09-30T14:42:57Z",
-      "download_url": "https://github.com/dhis2-utils/tool-user-disabler/releases/download/v1.0.0/tool-user-disabler-1.0.0.zip",
-      "release_url": "https://github.com/dhis2-utils/tool-user-disabler/releases/tag/v1.0.0"
-    },
-    {
-      "repo": "dhis2/tool-whitespace-remover",
-      "name": "Whitespace Cleaner Tool",
+      "repo": "dhis2-utils/tool-whitespace-remover",
+      "name": "Whitespace Remover Tool",
       "version": "1.0.0",
       "tag": "v1.0.0",
       "published_at": "2026-09-30T14:44:00Z",
