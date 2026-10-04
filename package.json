@@ -1,6 +1,6 @@
 {
     "name": "tool-box",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Lists the DHIS2 admin tools, their latest releases, and the versions installed on this instance",
     "license": "BSD-3-Clause",
     "private": true,
@@ -13,7 +13,8 @@
         "test": "d2-app-scripts test",
         "test:index": "node --test scripts/*.test.mjs",
         "deploy": "d2-app-scripts deploy",
-        "lint": "eslint && prettier -c . && tsc --noEmit",
+        "lint": "eslint && prettier -c .",
+        "typecheck": "tsc --noEmit",
         "format": "prettier . -w"
     },
     "dependencies": {

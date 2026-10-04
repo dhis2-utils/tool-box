@@ -1,10 +1,10 @@
 # DHIS2 Admin Toolbox
 
 > ![Maturity: Experimental](https://img.shields.io/badge/maturity-Experimental-orange)  
-> Intended use: Give overview of system admin tools released by the DHIS2 implementation team, their latest versions, and what is installed in a particular DHIS2 instance.
+> Intended use: Give overview of system admin tools released by the DHIS2 implementation team, their latest versions, and what is installed in a particular DHIS2 instance.  
 > Maintainers: HISP Centre implementation team.
->
-> **WARNING**
+
+> [!WARNING]
 > These tools are intended for system administrators, not end users. They are available as DHIS2 apps but have not been through the same testing as core apps. Use with care and always try them in a development environment first.
 
 ## How it works
@@ -22,6 +22,21 @@ inside the app: download the zip and install it with the App Management app.
 
 Only apps you have access to are listed by DHIS2. Users without the `ALL` authority see a
 warning, because tools they cannot open appear as not installed.
+
+## Known limitations
+
+- Installed apps are matched to tools by display name. A tool installed at a release with a
+  different display name, such as a 0.x release from before the tools were renamed, shows as
+  not installed.
+- The index is rebuilt daily, so a new tool release can take up to a day to appear.
+- Tools cannot be installed from inside the app (see above).
+
+## Upgrading from 1.0.0 or earlier
+
+The app key changed from `DHIS2-Admin-Toolbox` to `tool-box` in 1.1.0, so DHIS2 installs
+the new version as a separate app. Install it, uninstall the old "DHIS2 Admin Toolbox" in App
+Management, and add the new app to every user role that gave access to the old one. Bookmarks
+to the old app URL stop working.
 
 ## Adding or moving a tool
 
@@ -64,17 +79,20 @@ Other scripts:
 
 | Command                                | Purpose                                                                    |
 | -------------------------------------- | -------------------------------------------------------------------------- |
-| `pnpm lint`                            | eslint, prettier and TypeScript type-check                                 |
+| `pnpm lint`                            | eslint and prettier                                                        |
+| `pnpm typecheck`                       | TypeScript type-check                                                      |
 | `pnpm test`                            | Jest tests for the app                                                     |
 | `pnpm test:index`                      | Tests for the index script                                                 |
-| `pnpm build`                           | Production bundle at `build/bundle/DHIS2 Admin Toolbox-<version>.zip`      |
+| `pnpm build`                           | Production bundle at `build/bundle/tool-box-<version>.zip`                 |
 | `node scripts/build-release-index.mjs` | Build `releases.json` locally (set `GITHUB_TOKEN` to raise the rate limit) |
 
 ## Releasing
 
-Bump `version` in `package.json`, add a section to `CHANGELOG.md`, commit, then push a tag
-`vX.Y.Z`. The release workflow builds the bundle and attaches it to a GitHub release with
-the changelog section as notes.
+Follow the release procedure in
+[reference-tool-conventions](https://github.com/dhis2-utils/reference-tool-conventions/blob/main/RELEASE-WORKFLOW.md):
+bump `version` in `package.json`, add a `## [x.y.z]` section to `CHANGELOG.md`, merge to
+`main`, then push a tag `vx.y.z` on the merged commit. The release workflow builds the bundle
+and attaches it to a GitHub release with the changelog section as notes.
 
 ## License
 
