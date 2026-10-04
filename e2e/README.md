@@ -15,7 +15,7 @@ pip install -r e2e/requirements.txt && playwright install chromium
 pnpm build
 mkdir -p /tmp/out
 DHIS2_URL=http://dhis2-x:8080 DHIS2_USER=local_admin DHIS2_PASS=district \
-RESULTS_DIR=/tmp/out APP_ZIP=$PWD/build/bundle/tool-box-1.0.0.zip \
+RESULTS_DIR=/tmp/out APP_ZIP=$PWD/build/bundle/tool-box-1.1.0.zip \
   e2e/run.sh
 ```
 

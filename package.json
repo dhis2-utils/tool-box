@@ -1,6 +1,6 @@
 {
     "name": "tool-box",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Lists the DHIS2 admin tools, their latest releases, and the versions installed on this instance",
     "license": "BSD-3-Clause",
     "private": true,
