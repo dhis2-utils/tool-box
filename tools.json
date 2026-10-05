@@ -28,6 +28,10 @@
         "name": "Program Rule Validator Tool"
     },
     {
+        "repo": "dhis2-utils/tool-tracker-validation-generator",
+        "name": "Tracker Validation Tool"
+    },
+    {
         "repo": "dhis2-utils/tool-translation-deduplicator",
         "name": "Translation Deduplication Tool"
     },
