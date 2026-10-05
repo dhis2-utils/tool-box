@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-05T09:48:54.201Z",
+  "generated_at": "2026-10-05T18:01:29.457Z",
   "tools": [
     {
       "repo": "dhis2-utils/tool-box",
@@ -63,6 +63,15 @@
       "published_at": "2026-10-01T05:28:42Z",
       "download_url": "https://github.com/dhis2-utils/tool-program-rule-validator/releases/download/v1.0.1/tool-program-rule-validator-1.0.1.zip",
       "release_url": "https://github.com/dhis2-utils/tool-program-rule-validator/releases/tag/v1.0.1"
+    },
+    {
+      "repo": "dhis2-utils/tool-tracker-validation-generator",
+      "name": "Tracker Validation Tool",
+      "version": "1.1.0",
+      "tag": "v1.1.0",
+      "published_at": "2026-10-05T17:48:47Z",
+      "download_url": "https://github.com/dhis2-utils/tool-tracker-validation-generator/releases/download/v1.1.0/tool-tracker-validation-generator-1.1.0.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-tracker-validation-generator/releases/tag/v1.1.0"
     },
     {
       "repo": "dhis2-utils/tool-translation-deduplicator",
