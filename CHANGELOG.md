@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- List Tracker Validation Tool (`tool-tracker-validation-generator`).
+
 ## [1.1.0] - 2026-10-04
 
 ### Upgrading
