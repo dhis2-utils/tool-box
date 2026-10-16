@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T07:41:36.363Z",
+  "generated_at": "2026-10-16T13:24:53.736Z",
   "tools": [
     {
       "repo": "dhis2-utils/tool-box",
@@ -21,12 +21,12 @@
     },
     {
       "repo": "dhis2-utils/tool-data-dimension-disabler",
-      "name": "Data Dimension Disabler",
-      "version": "1.0.0",
-      "tag": "v1.0.0",
-      "published_at": "2026-09-29T08:32:43Z",
-      "download_url": "https://github.com/dhis2-utils/tool-data-dimension-disabler/releases/download/v1.0.0/data-dimension-disabler-1.0.0.zip",
-      "release_url": "https://github.com/dhis2-utils/tool-data-dimension-disabler/releases/tag/v1.0.0"
+      "name": "Data Dimension Disabler Tool",
+      "version": "1.1.0",
+      "tag": "v1.1.0",
+      "published_at": "2026-10-16T13:23:17Z",
+      "download_url": "https://github.com/dhis2-utils/tool-data-dimension-disabler/releases/download/v1.1.0/tool-data-dimension-disabler-1.1.0.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-data-dimension-disabler/releases/tag/v1.1.0"
     },
     {
       "repo": "dhis2-utils/tool-dq-helper",
