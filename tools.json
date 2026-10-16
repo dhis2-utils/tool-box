@@ -9,7 +9,7 @@
     },
     {
         "repo": "dhis2-utils/tool-data-dimension-disabler",
-        "name": "Data Dimension Disabler"
+        "name": "Data Dimension Disabler Tool"
     },
     {
         "repo": "dhis2-utils/tool-dq-helper",
