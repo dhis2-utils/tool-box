@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23T08:05:43.846Z",
+  "generated_at": "2026-10-24T07:45:16.331Z",
   "tools": [
     {
       "repo": "dhis2-utils/tool-box",
@@ -76,38 +76,38 @@
     {
       "repo": "dhis2-utils/tool-translation-deduplicator",
       "name": "Translation Deduplication Tool",
-      "version": "1.0.0",
-      "tag": "v1.0.0",
-      "published_at": "2026-09-30T14:42:21Z",
-      "download_url": "https://github.com/dhis2-utils/tool-translation-deduplicator/releases/download/v1.0.0/tool-translation-deduplicator-1.0.0.zip",
-      "release_url": "https://github.com/dhis2-utils/tool-translation-deduplicator/releases/tag/v1.0.0"
+      "version": "1.0.1",
+      "tag": "v1.0.1",
+      "published_at": "2026-10-23T08:30:39Z",
+      "download_url": "https://github.com/dhis2-utils/tool-translation-deduplicator/releases/download/v1.0.1/tool-translation-deduplicator-1.0.1.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-translation-deduplicator/releases/tag/v1.0.1"
     },
     {
       "repo": "dhis2-utils/tool-user-disabler",
       "name": "User Disabler Tool",
-      "version": "1.0.0",
-      "tag": "v1.0.0",
-      "published_at": "2026-09-30T14:42:57Z",
-      "download_url": "https://github.com/dhis2-utils/tool-user-disabler/releases/download/v1.0.0/tool-user-disabler-1.0.0.zip",
-      "release_url": "https://github.com/dhis2-utils/tool-user-disabler/releases/tag/v1.0.0"
+      "version": "1.1.0",
+      "tag": "v1.1.0",
+      "published_at": "2026-10-23T09:55:25Z",
+      "download_url": "https://github.com/dhis2-utils/tool-user-disabler/releases/download/v1.1.0/tool-user-disabler-1.1.0.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-user-disabler/releases/tag/v1.1.0"
     },
     {
       "repo": "dhis2-utils/tool-user-role-aggregator",
       "name": "User Admin Role Aggregator",
-      "version": "1.0.0",
-      "tag": "v1.0.0",
-      "published_at": "2026-09-30T14:43:21Z",
-      "download_url": "https://github.com/dhis2-utils/tool-user-role-aggregator/releases/download/v1.0.0/tool-user-role-aggregator-1.0.0.zip",
-      "release_url": "https://github.com/dhis2-utils/tool-user-role-aggregator/releases/tag/v1.0.0"
+      "version": "1.1.0",
+      "tag": "v1.1.0",
+      "published_at": "2026-10-23T10:05:53Z",
+      "download_url": "https://github.com/dhis2-utils/tool-user-role-aggregator/releases/download/v1.1.0/tool-user-role-aggregator-1.1.0.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-user-role-aggregator/releases/tag/v1.1.0"
     },
     {
       "repo": "dhis2-utils/tool-whitespace-remover",
       "name": "Whitespace Remover Tool",
-      "version": "1.0.0",
-      "tag": "v1.0.0",
-      "published_at": "2026-09-30T14:44:00Z",
-      "download_url": "https://github.com/dhis2-utils/tool-whitespace-remover/releases/download/v1.0.0/tool-whitespace-remover-1.0.0.zip",
-      "release_url": "https://github.com/dhis2-utils/tool-whitespace-remover/releases/tag/v1.0.0"
+      "version": "1.0.1",
+      "tag": "v1.0.1",
+      "published_at": "2026-10-23T15:17:05Z",
+      "download_url": "https://github.com/dhis2-utils/tool-whitespace-remover/releases/download/v1.0.1/tool-whitespace-remover-1.0.1.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-whitespace-remover/releases/tag/v1.0.1"
     }
   ]
 }
