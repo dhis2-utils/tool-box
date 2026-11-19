@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T10:53:41.404Z",
+  "generated_at": "2026-11-19T10:56:03.308Z",
   "tools": [
     {
       "repo": "dhis2-utils/tool-box",
@@ -49,11 +49,11 @@
     {
       "repo": "dhis2-utils/tool-job-status",
       "name": "Job Status Tool",
-      "version": "1.1.0",
-      "tag": "v1.1.0",
-      "published_at": "2026-11-18T09:03:14Z",
-      "download_url": "https://github.com/dhis2-utils/tool-job-status/releases/download/v1.1.0/tool-job-status-1.1.0.zip",
-      "release_url": "https://github.com/dhis2-utils/tool-job-status/releases/tag/v1.1.0"
+      "version": "1.1.2",
+      "tag": "v1.1.2",
+      "published_at": "2026-11-19T08:16:27Z",
+      "download_url": "https://github.com/dhis2-utils/tool-job-status/releases/download/v1.1.2/tool-job-status-1.1.2.zip",
+      "release_url": "https://github.com/dhis2-utils/tool-job-status/releases/tag/v1.1.2"
     },
     {
       "repo": "dhis2-utils/tool-program-rule-validator",
